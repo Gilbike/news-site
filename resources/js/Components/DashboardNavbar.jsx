@@ -15,6 +15,10 @@ export default function DashboardNavbar() {
                 <Link href={route("dashboard")}>News Site</Link>
                 <div className="flex flex-row items-center gap-4">
                     <DashboardNavbarButton to="dashboard" label="Dashboard" />
+                    <DashboardNavbarButton
+                        to="journalists.index"
+                        label="Journalists"
+                    />
                 </div>
             </div>
 
