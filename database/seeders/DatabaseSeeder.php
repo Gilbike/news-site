@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@news.com',
             'password' => bcrypt('admin'),
             'firstname' => 'Journalist',
-            'lastname' => 'Name'
+            'lastname' => 'Name',
+            'editor' => true,
         ]);
     }
 }
