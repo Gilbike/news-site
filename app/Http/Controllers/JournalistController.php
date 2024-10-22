@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class JournalistController extends Controller
+class JournalistController extends Controller implements HasMiddleware
 {
+    public static function middleware()
+    {
+        return [
+            new Middleware('editor', only: ['create']),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
