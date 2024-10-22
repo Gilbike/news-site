@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import React from "react";
 
 export default function JournalistRow({
@@ -24,18 +24,24 @@ export default function JournalistRow({
                 {title ? title : "N/A"}
             </td>
             <td className="py-2 flex flex-col gap-1">
-                <Link
-                    href="/"
-                    className="rounded p-1 bg-indigo-500 hover:bg-indigo-600 text-white "
-                >
-                    Edit
-                </Link>
-                <Link
-                    href="/"
-                    className="rounded p-1 bg-red-500 hover:bg-red-600 text-white "
-                >
-                    Delete
-                </Link>
+                {usePage().props.auth.user.editor ? (
+                    <>
+                        <Link
+                            href="/"
+                            className="rounded p-1 bg-indigo-500 hover:bg-indigo-600 text-white "
+                        >
+                            Edit
+                        </Link>
+                        <Link
+                            href="/"
+                            className="rounded p-1 bg-red-500 hover:bg-red-600 text-white "
+                        >
+                            Delete
+                        </Link>
+                    </>
+                ) : (
+                    <p className="text-neutral-600">N/A</p>
+                )}
             </td>
         </tr>
     );
