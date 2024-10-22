@@ -22,7 +22,7 @@ class JournalistController extends Controller
      */
     public function create()
     {
-        //
+        return inertia("Dashboard/Journalists/Create");
     }
 
     /**

@@ -9,7 +9,6 @@ export default function JournalistRow({
     editor,
     title,
 }) {
-    console.log(title);
     const isEditor = editor == true;
     const hasTitle = title != null && title != undefined && title != "";
 

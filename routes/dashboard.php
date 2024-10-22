@@ -5,5 +5,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
   Route::resource('journalists', JournalistController::class)
-    ->only(['index']);
+    ->only(['index', 'create']);
 });

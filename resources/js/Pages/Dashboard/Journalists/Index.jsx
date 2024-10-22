@@ -1,6 +1,6 @@
 import JournalistRow from "@/Components/Journalists/JournalistRow";
 import DashboardLayout from "@/Layouts/DashboardLayout";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import React from "react";
 
 export default function Index({ journalists }) {
@@ -10,7 +10,7 @@ export default function Index({ journalists }) {
                 <div className="flex flex-row items-center justify-between mb-6">
                     <h2 className="font-bold text-xl">Journalists</h2>
                     <Link
-                        href={route("journalists.index")}
+                        href={route("journalists.create")}
                         className="rounded px-3 py-1 bg-indigo-500 hover:bg-indigo-600 text-white"
                     >
                         Add new
