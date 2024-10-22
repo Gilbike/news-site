@@ -12,7 +12,9 @@ class JournalistController extends Controller
      */
     public function index()
     {
-        return inertia("Dashboard/Journalists/Index");
+        return inertia("Dashboard/Journalists/Index", [
+            "journalists" => User::all()
+        ]);
     }
 
     /**
