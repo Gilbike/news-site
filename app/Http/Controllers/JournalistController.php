@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
+use DB;
+use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
@@ -37,9 +40,26 @@ class JournalistController extends Controller implements HasMiddleware
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $newID = DB::table("users")->latest()->first()->id + 1;
+        $isNameDuplicated = DB::table("users")->where(["firstname" => $validated["firstname"], "lastname" => $validated["lastname"]])->exists();
+
+        $username = strtolower($validated["firstname"] . '.' . $validated["lastname"]);
+
+        if ($isNameDuplicated) {
+            $username .= '.' . $newID;
+        }
+
+        $validated["name"] = $username;
+        $validated["email"] = $username . "@news.com";
+        $validated["password"] = $validated["lastname"];
+
+        User::create($validated);
+
+        return redirect()->route('journalists.index');
     }
 
     /**
