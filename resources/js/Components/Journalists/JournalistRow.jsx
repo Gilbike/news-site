@@ -27,7 +27,7 @@ export default function JournalistRow({
                 {usePage().props.auth.user.editor ? (
                     <>
                         <Link
-                            href="/"
+                            href={route("journalists.edit", { journalist: id })}
                             className="rounded p-1 bg-indigo-500 hover:bg-indigo-600 text-white "
                         >
                             Edit
