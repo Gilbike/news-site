@@ -23,8 +23,8 @@ export default function JournalistRow({
             <td className={`${hasTitle ? "text-black" : "text-neutral-600"}`}>
                 {title ? title : "N/A"}
             </td>
-            <td className="py-2 flex flex-col gap-1">
-                {usePage().props.auth.user.editor ? (
+            {usePage().props.auth.user.editor && (
+                <td className="py-2 flex flex-col gap-1">
                     <>
                         <Link
                             href={route("journalists.edit", { journalist: id })}
@@ -39,10 +39,8 @@ export default function JournalistRow({
                             Delete
                         </Link>
                     </>
-                ) : (
-                    <p className="text-neutral-600">N/A</p>
-                )}
-            </td>
+                </td>
+            )}
         </tr>
     );
 }

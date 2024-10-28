@@ -27,7 +27,9 @@ export default function Index({ journalists }) {
                             <th>Email</th>
                             <th>Editor?</th>
                             <th>Title</th>
-                            <th>Action</th>
+                            {usePage().props.auth.user.editor == true && (
+                                <th>Action</th>
+                            )}
                         </tr>
                     </thead>
                     <tbody>
