@@ -99,8 +99,12 @@ class JournalistController extends Controller implements HasMiddleware
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(Request $request, User $journalist)
     {
-        //
+        if ($journalist->is($request->user())) {
+            abort(403);
+        }
+
+        $journalist->delete();
     }
 }

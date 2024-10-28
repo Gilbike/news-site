@@ -33,8 +33,11 @@ export default function JournalistRow({
                             Edit
                         </Link>
                         <Link
-                            href="/"
-                            className="rounded p-1 bg-red-500 hover:bg-red-600 text-white "
+                            href={route("journalists.destroy", {
+                                journalist: id,
+                            })}
+                            className="rounded p-1 bg-red-500 hover:bg-red-600 text-white"
+                            method="delete"
                         >
                             Delete
                         </Link>
