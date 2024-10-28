@@ -14,7 +14,7 @@ class JournalistController extends Controller implements HasMiddleware
     public static function middleware()
     {
         return [
-            new Middleware('editor', only: ['create', 'edit']),
+            new Middleware('editor', only: ['create', 'edit', 'update', 'destroy']),
         ];
     }
 
