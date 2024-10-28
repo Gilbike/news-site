@@ -14,7 +14,7 @@ class JournalistController extends Controller implements HasMiddleware
     public static function middleware()
     {
         return [
-            new Middleware('editor', only: ['create']),
+            new Middleware('editor', only: ['create', 'edit']),
         ];
     }
 
@@ -80,9 +80,20 @@ class JournalistController extends Controller implements HasMiddleware
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $journalist)
     {
-        //
+        $validated = $request->validate([
+            "title" => '',
+            "editor" => ''
+        ]);
+
+        foreach ($validated as $key => $value) {
+            $journalist->$key = $value;
+        }
+
+        $journalist->save();
+
+        return redirect()->route('journalists.index');
     }
 
     /**
