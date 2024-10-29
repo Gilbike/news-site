@@ -7,6 +7,14 @@ test('login screen can be rendered', function () {
     $response->assertStatus(200);
 });
 
+test('dashboard can be accessed when logged in', function () {
+    $user = User::factory()->create();
+
+    $response = $this->actingAs($user)->get('/dashboard');
+
+    $response->assertOk();
+});
+
 test('dashboard cannot be accessed when not logged in', function () {
     $response = $this->get('/dashboard');
     $response->assertRedirectToRoute('login');
