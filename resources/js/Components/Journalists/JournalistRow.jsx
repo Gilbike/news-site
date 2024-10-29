@@ -38,6 +38,7 @@ export default function JournalistRow({
                             })}
                             className="rounded p-1 bg-red-500 hover:bg-red-600 text-white"
                             method="delete"
+                            as="button"
                         >
                             Delete
                         </Link>
