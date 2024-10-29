@@ -19,6 +19,10 @@ export default function DashboardNavbar() {
                         to="journalists.index"
                         label="Journalists"
                     />
+                    <DashboardNavbarButton
+                        to="sections.index"
+                        label="Sections"
+                    />
                 </div>
             </div>
 
