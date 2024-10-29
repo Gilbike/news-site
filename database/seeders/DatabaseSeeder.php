@@ -23,5 +23,11 @@ class DatabaseSeeder extends Seeder
             'lastname' => 'Name',
             'editor' => true,
         ]);
+
+        User::factory(5)->create();
+
+        $this->call([
+            SectionSeeder::class
+        ]);
     }
 }
