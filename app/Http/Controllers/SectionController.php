@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Section;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
@@ -11,7 +12,7 @@ class SectionController extends Controller
      */
     public function index()
     {
-        return inertia('Dashboard/Sections/Index');
+        return inertia('Dashboard/Sections/Index', ["sections" => Section::all()]);
     }
 
     /**
