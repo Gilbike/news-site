@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JournalistController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,4 +11,8 @@ Route::middleware('auth')->group(function () {
 
   Route::resource('sections', SectionController::class)
     ->only(['index', 'create', 'store', 'update', 'destroy']);
+
+  Route::get('/journalists/profile', [ProfileController::class, 'show'])
+    ->middleware('auth')
+    ->name('profile');
 });

@@ -49,6 +49,12 @@ export default function DashboardNavbar() {
                 {profileOpen ? (
                     <div className="absolute w-48 right-0 bg-neutral-50 shadow rounded-lg overflow-hidden z-50">
                         <Link
+                            href={route('profile')}
+                            className="flex w-full px-3 py-2 hover:bg-neutral-100"
+                        >
+                            Profile
+                        </Link>
+                        <Link
                             href="/logout"
                             method="post"
                             className="flex w-full px-3 py-2 hover:bg-neutral-100"
