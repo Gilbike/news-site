@@ -51,7 +51,7 @@ export default function DashboardNavbar() {
                         <Link
                             href="/logout"
                             method="post"
-                            className="flex px-3 py-2 hover:bg-neutral-100"
+                            className="flex w-full px-3 py-2 hover:bg-neutral-100"
                             as="button"
                         >
                             Logout
