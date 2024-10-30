@@ -10,6 +10,28 @@ test('journalists page can be rendered', function () {
 });
 
 describe('editor', function () {
+    test('can view create page', function () {
+        $user = User::factory()->create(['editor' => true]);
+
+        $response = $this->actingAs($user)->get("/journalists/create");
+
+        $response->assertOk();
+    });
+
+    test('can create journalist', function () {
+        $user = User::factory()->create(['editor' => true]);
+
+        $response = $this->actingAs($user)->post("/journalists", [
+            "firstname" => "test",
+            "lastname" => "user",
+        ]);
+
+        $dummy = User::where(["firstname" => "test", "lastname" => "user"])->exists();
+
+        expect($dummy)->toBeTrue();
+        $response->assertRedirectToRoute('journalists.index');
+    });
+
     test('can view edit page', function () {
         $user = User::factory()->create(['editor' => true]);
 
@@ -45,6 +67,28 @@ describe('editor', function () {
 });
 
 describe('non editor', function () {
+    test('cannot view create page', function () {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)->get("/journalists/create");
+
+        $response->assertRedirectToRoute('dashboard');
+    });
+
+    test('cannot create journalist', function () {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)->post("/journalists", [
+            "firstname" => "test",
+            "lastname" => "user",
+        ]);
+
+        $dummy = User::where(["firstname" => "test", "lastname" => "user"])->exists();
+
+        expect($dummy)->toBeFalse();
+        $response->assertForbidden();
+    });
+
     test('cannot view edit page', function () {
         $user = User::factory()->create();
 
