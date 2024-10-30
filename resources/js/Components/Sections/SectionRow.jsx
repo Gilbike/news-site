@@ -2,6 +2,8 @@ import { Link, useForm, usePage } from "@inertiajs/react";
 import React, { useState } from "react";
 import Input from "../Input";
 import Button from "../Button";
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 export default function SectionRow({ id, name }) {
     const [editing, setEditing] = useState(false);
@@ -37,23 +39,21 @@ export default function SectionRow({ id, name }) {
                 )}
             </td>
             {usePage().props.auth.user.editor && (
-                <td className="py-2 flex flex-col gap-1">
-                    <>
-                        <button
-                            className="rounded p-1 bg-indigo-500 hover:bg-indigo-600 text-white"
-                            onClick={() => setEditing(!editing)}
-                        >
-                            Edit
-                        </button>
-                        <Link
-                            href={route("sections.destroy", { section: id })}
-                            className="rounded p-1 bg-red-500 hover:bg-red-600 text-white"
-                            method="delete"
-                            as="button"
-                        >
-                            Delete
-                        </Link>
-                    </>
+                <td className="py-1 flex flex-row gap-1 justify-center">
+                    <button
+                        className="rounded bg-indigo-500 hover:bg-indigo-600 text-white p-2"
+                        onClick={() => setEditing(!editing)}
+                    >
+                        <FaEdit />
+                    </button>
+                    <Link
+                        href={route("sections.destroy", { section: id })}
+                        className="rounded p-2 bg-red-500 hover:bg-red-600 text-white"
+                        method="delete"
+                        as="button"
+                    >
+                        <MdDelete />
+                    </Link>
                 </td>
             )}
         </tr>

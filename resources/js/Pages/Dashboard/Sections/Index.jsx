@@ -24,14 +24,22 @@ export default function Index({ sections }) {
                         <tr>
                             <th>Name</th>
                             {usePage().props.auth.user.editor == true && (
-                                <th>Action</th>
+                                <th className="w-1/4">Action</th>
                             )}
                         </tr>
                     </thead>
                     <tbody>
-                        {sections.map((section) => (
-                            <SectionRow key={section.id} {...section} />
-                        ))}
+                        {sections.length != 0 ? (
+                            sections.map((section) => (
+                                <SectionRow key={section.id} {...section} />
+                            ))
+                        ) : (
+                            <tr className="odd:bg-neutral-50">
+                                <td colSpan={2} className="py-2 text-center">
+                                    No sections found
+                                </td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>
