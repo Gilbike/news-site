@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSectionRequest;
+use App\Http\Requests\UpdateSectionRequest;
 use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -64,9 +65,13 @@ class SectionController extends Controller implements HasMiddleware
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateSectionRequest $request, Section $section)
     {
-        //
+        $validated = $request->validated();
+
+        $section->update($validated);
+
+        return redirect()->route('sections.index');
     }
 
     /**

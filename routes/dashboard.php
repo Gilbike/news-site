@@ -9,5 +9,5 @@ Route::middleware('auth')->group(function () {
     ->except('show');
 
   Route::resource('sections', SectionController::class)
-    ->only(['index', 'create', 'store']);
+    ->only(['index', 'create', 'store', 'update']);
 });
