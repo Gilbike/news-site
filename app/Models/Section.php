@@ -9,4 +9,6 @@ class Section extends Model
 {
     /** @use HasFactory<\Database\Factories\SectionFactory> */
     use HasFactory;
+
+    protected $fillable = ['name'];
 }

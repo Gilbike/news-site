@@ -11,7 +11,7 @@ export default function Index({ sections }) {
                     <h2 className="font-bold text-xl">Sections</h2>
                     {usePage().props.auth.user.editor && (
                         <Link
-                            href={"/"}
+                            href={route("sections.create")}
                             className="rounded px-3 py-1 bg-indigo-500 hover:bg-indigo-600 text-white"
                         >
                             Add new
