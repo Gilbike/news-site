@@ -14,7 +14,7 @@ class SectionController extends Controller implements HasMiddleware
     public static function middleware()
     {
         return [
-            new Middleware('editor', only: ['create']),
+            new Middleware('editor', only: ['create', 'destroy']),
         ];
     }
 
