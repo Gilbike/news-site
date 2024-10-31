@@ -8,10 +8,16 @@ export default function ProfileEditName({ firstname, lastname }) {
         lastname,
     });
 
+    const submit = (e) => {
+        e.preventDefault();
+
+        patch(route("profile.update"));
+    };
+
     return (
         <div className="bg-white rounded-lg shadow p-6 mt-3">
             <h2 className="font-bold text-xl">Personal information</h2>
-            <form className="flex flex-col gap-3 mt-3 w-full">
+            <form className="flex flex-col gap-3 mt-3 w-full" onSubmit={submit}>
                 <div className="flex flex-row gap-2">
                     <FormInput
                         fieldName="firstname"
