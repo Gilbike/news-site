@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Hash;
 
 test('can render profile page', function () {
     $user = User::factory()->create();
@@ -24,4 +25,19 @@ test('can update personal details', function () {
     expect($user->lastname)->toBe('name');
     expect($user->name)->toBe('dummy.name');
     expect($user->email)->toBe('dummy.name@news.com');
+});
+
+test('can update password', function () {
+    $user = User::factory()->create();
+
+    $response = $this->actingAs($user)->put(route('profile.password.update'), [
+        'current_password' => 'password',
+        'password' => 'dummy-password',
+        'password_confirmation' => 'dummy-password'
+    ]);
+
+    $user->refresh();
+
+    $response->assertSessionHasNoErrors()->assertRedirect();
+    expect(Hash::check('dummy-password', $user->password, ))->toBeTrue();
 });
