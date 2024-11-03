@@ -1,3 +1,4 @@
+import { Link } from "@inertiajs/react";
 import { IoMdList } from "react-icons/io";
 
 export default function Navbar() {
@@ -6,7 +7,9 @@ export default function Navbar() {
             <button>
                 <IoMdList size={32} />
             </button>
-            <h1 className="text-3xl text-indigo-500 font-bold">News Site</h1>
+            <Link href="/" className="text-3xl text-indigo-500 font-bold">
+                News Site
+            </Link>
             <span></span>
         </nav>
     );
