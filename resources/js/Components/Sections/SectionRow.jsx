@@ -21,8 +21,8 @@ export default function SectionRow({ id, name }) {
     };
 
     return (
-        <tr className="text-center even:bg-neutral-100 odd:bg-neutral-50">
-            <td>
+        <tr className="text-left even:bg-neutral-100 odd:bg-neutral-50">
+            <td className="px-2">
                 {editing ? (
                     <form
                         onSubmit={submit}

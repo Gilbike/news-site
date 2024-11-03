@@ -1,9 +1,25 @@
 import SectionRow from "@/Components/Sections/SectionRow";
+import TableSortColumn from "@/Components/TableSortColumn";
 import DashboardLayout from "@/Layouts/DashboardLayout";
-import { Link, usePage } from "@inertiajs/react";
+import { Link, router, usePage } from "@inertiajs/react";
 import React from "react";
 
 export default function Index({ sections }) {
+    const params = new URLSearchParams(window.location.search);
+    const orderDirection = params.get("dir") || "asc";
+
+    const onHeadingClick = (column) => {
+        let queryParams = {};
+
+        if (orderDirection == "desc") {
+            queryParams["dir"] = "asc";
+        } else {
+            queryParams["dir"] = "desc";
+        }
+
+        router.get(route(route().current()), queryParams);
+    };
+
     return (
         <DashboardLayout>
             <div className="bg-white rounded-lg shadow p-6">
@@ -22,7 +38,13 @@ export default function Index({ sections }) {
                 <table className="w-full rounded overflow-hidden">
                     <thead className="bg-neutral-100">
                         <tr>
-                            <th>Name</th>
+                            <TableSortColumn
+                                label="Name"
+                                orderColumn="name"
+                                orderBy="name"
+                                orderDirection={orderDirection}
+                                handleMethod={onHeadingClick}
+                            />
                             {usePage().props.auth.user.editor == true && (
                                 <th className="w-1/4">Action</th>
                             )}

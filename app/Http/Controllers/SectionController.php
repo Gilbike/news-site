@@ -21,9 +21,20 @@ class SectionController extends Controller implements HasMiddleware
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return inertia('Dashboard/Sections/Index', ["sections" => Section::all()]);
+        $orderDir = $request->query('dir', 'asc');
+
+        $sections = Section::query();
+
+        if ($orderDir == 'desc')
+            $sections->orderByDesc('name');
+        else
+            $sections->orderBy('name');
+
+        $sections = $sections->get();
+
+        return inertia('Dashboard/Sections/Index', ["sections" => $sections]);
     }
 
     /**
