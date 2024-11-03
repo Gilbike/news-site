@@ -26,17 +26,7 @@ class JournalistController extends Controller implements HasMiddleware
         $orderBy = $request->query('ord', 'id');
         $orderDir = $request->query('dir', 'asc');
 
-        if ($orderBy == 'name')
-            $orderBy = 'firstname';
-
-        $journalists = User::query();
-
-        if ($orderDir == 'desc')
-            $journalists->orderByDesc($orderBy);
-        else
-            $journalists->orderBy($orderBy);
-
-        $journalists = $journalists->get();
+        $journalists = User::orderBy($orderBy, $orderDir)->get();
 
         return inertia("Dashboard/Journalists/Index", [
             "journalists" => $journalists,

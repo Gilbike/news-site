@@ -25,14 +25,7 @@ class SectionController extends Controller implements HasMiddleware
     {
         $orderDir = $request->query('dir', 'asc');
 
-        $sections = Section::query();
-
-        if ($orderDir == 'desc')
-            $sections->orderByDesc('name');
-        else
-            $sections->orderBy('name');
-
-        $sections = $sections->get();
+        $sections = Section::orderBy('name', $orderDir)->get();
 
         return inertia('Dashboard/Sections/Index', ["sections" => $sections]);
     }
