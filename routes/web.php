@@ -17,3 +17,4 @@ require __DIR__ . '/auth.php';
 require __DIR__ . '/dashboard.php';
 
 Route::get('/{section:name}', [SectionController::class, 'show']);
+Route::get('/{section:name}/{article:slug}', [ArticleController::class, 'show']);
