@@ -1,15 +1,12 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Models\Article;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    $articles = Article::orderBy('created_at', 'desc')->get();
-
-    return Inertia::render('Home', ['articles' => $articles]);
-});
+Route::get('/', [ArticleController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
