@@ -21,10 +21,10 @@ class JournalistController extends Controller implements HasMiddleware
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $requset)
+    public function index(Request $request)
     {
-        $orderBy = $requset->query('ord', 'id');
-        $orderDir = $requset->query('dir', 'asc');
+        $orderBy = $request->query('ord', 'id');
+        $orderDir = $request->query('dir', 'asc');
 
         if ($orderBy == 'name')
             $orderBy = 'firstname';
