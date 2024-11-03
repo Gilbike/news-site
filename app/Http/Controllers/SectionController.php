@@ -53,9 +53,11 @@ class SectionController extends Controller implements HasMiddleware
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Section $section)
     {
-        //
+        $articles = $section->articles()->get();
+
+        return inertia('Section', ['sectionName' => $section->name, 'articles' => $articles]);
     }
 
     /**

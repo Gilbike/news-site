@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\SectionController;
 use App\Models\Article;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -14,3 +15,5 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/dashboard.php';
+
+Route::get('/{section:name}', [SectionController::class, 'show']);
