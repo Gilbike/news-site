@@ -15,8 +15,8 @@ export default function JournalistRow({
     const hasTitle = title != null && title != undefined && title != "";
 
     return (
-        <tr className="text-center even:bg-neutral-100 odd:bg-neutral-50">
-            <td>{id}</td>
+        <tr className="even:bg-neutral-100 odd:bg-neutral-50">
+            <td className="px-1">{id}</td>
             <td>
                 {firstname} {lastname}
             </td>

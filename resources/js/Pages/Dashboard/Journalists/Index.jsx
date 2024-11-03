@@ -1,9 +1,28 @@
 import JournalistRow from "@/Components/Journalists/JournalistRow";
+import TableSortColumn from "@/Components/TableSortColumn";
 import DashboardLayout from "@/Layouts/DashboardLayout";
-import { Link, usePage } from "@inertiajs/react";
+import { Link, router, usePage } from "@inertiajs/react";
 import React from "react";
 
 export default function Index({ journalists }) {
+    const params = new URLSearchParams(window.location.search);
+    const orderBy = params.get("ord") || "id";
+    const orderDirection = params.get("dir") || "asc";
+
+    const onHeadingClick = (column) => {
+        let queryParams = { ord: column };
+
+        if (orderBy == column) {
+            if (orderDirection == "desc") {
+                queryParams["dir"] = "asc";
+            } else {
+                queryParams["dir"] = "desc";
+            }
+        }
+
+        router.get(route(route().current()), queryParams);
+    };
+
     return (
         <DashboardLayout>
             <div className="bg-white rounded-lg shadow p-6">
@@ -22,11 +41,29 @@ export default function Index({ journalists }) {
                 <table className="w-full rounded overflow-hidden">
                     <thead className="bg-neutral-100">
                         <tr>
-                            <th className="py-1">#</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Editor?</th>
-                            <th>Title</th>
+                            <TableSortColumn
+                                label="#"
+                                orderColumn="id"
+                                orderBy={orderBy}
+                                orderDirection={orderDirection}
+                                handleMethod={onHeadingClick}
+                            />
+                            <TableSortColumn
+                                label="Name"
+                                orderColumn="name"
+                                orderBy={orderBy}
+                                orderDirection={orderDirection}
+                                handleMethod={onHeadingClick}
+                            />
+                            <TableSortColumn
+                                label="Email"
+                                orderColumn="email"
+                                orderBy={orderBy}
+                                orderDirection={orderDirection}
+                                handleMethod={onHeadingClick}
+                            />
+                            <th className="text-left">Editor?</th>
+                            <th className="text-left">Title</th>
                             {usePage().props.auth.user.editor == true && (
                                 <th>Action</th>
                             )}

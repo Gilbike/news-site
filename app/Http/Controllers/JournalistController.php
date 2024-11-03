@@ -21,10 +21,25 @@ class JournalistController extends Controller implements HasMiddleware
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $requset)
     {
+        $orderBy = $requset->query('ord', 'id');
+        $orderDir = $requset->query('dir', 'asc');
+
+        if ($orderBy == 'name')
+            $orderBy = 'firstname';
+
+        $journalists = User::query();
+
+        if ($orderDir == 'desc')
+            $journalists->orderByDesc($orderBy);
+        else
+            $journalists->orderBy($orderBy);
+
+        $journalists = $journalists->get();
+
         return inertia("Dashboard/Journalists/Index", [
-            "journalists" => User::all()
+            "journalists" => $journalists,
         ]);
     }
 
