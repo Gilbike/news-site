@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\User;
-use Hash;
 
 test('can render profile page', function () {
     $user = User::factory()->create();

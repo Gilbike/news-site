@@ -99,3 +99,11 @@ describe('non editor', function () {
         $response->assertRedirectToRoute('dashboard');
     });
 });
+
+test('can view section', function () {
+    $section = Section::factory()->create(['name' => 'economy']);
+
+    $response = $this->get("/$section->name");
+
+    $response->assertOk();
+});
