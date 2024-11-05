@@ -25,6 +25,10 @@ Route::get('/article/{article}/edit', [ArticleController::class, 'edit'])
     ->middleware('auth')
     ->name('article.edit');
 
+Route::patch('/article/{article}/edit', [ArticleController::class, 'update'])
+    ->middleware('auth')
+    ->name('article.update');
+
 require __DIR__ . '/auth.php';
 require __DIR__ . '/dashboard.php';
 

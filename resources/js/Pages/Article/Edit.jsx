@@ -6,7 +6,7 @@ import { useForm } from "@inertiajs/react";
 import { useState } from "react";
 
 export default function Edit({ article }) {
-    const { data, setData, errors, processing, post } = useForm({
+    const { data, setData, errors, processing, patch } = useForm({
         title: article.title,
         slug: article.slug,
         small_summary: article.small_summary,
@@ -16,11 +16,11 @@ export default function Edit({ article }) {
     const [customSlug, setCustomSlug] = useState("");
 
     const submitArticle = () => {
-        if (customSlug != undefined || customSlug !== "") {
-            setData("slug", customSlug);
+        if (customSlug != undefined && customSlug !== "") {
+            setData((data) => ({ ...data, slug: customSlug }));
         }
 
-        post(route("article.update"));
+        patch(route("article.update", { article: article.id }));
     };
 
     return (
@@ -91,7 +91,11 @@ export default function Edit({ article }) {
                 </div>
             </div>
 
-            <Button className="w-full mt-3" onClick={submitArticle}>
+            <Button
+                disabled={processing}
+                className="w-full mt-3"
+                onClick={submitArticle}
+            >
                 Save
             </Button>
         </DashboardLayout>

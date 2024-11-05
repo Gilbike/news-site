@@ -55,4 +55,23 @@ class ArticleController extends Controller
     {
         return inertia('Article/Edit', ['article' => $article]);
     }
+
+    public function update(Request $request, Article $article)
+    {
+        $validated = $request->validate([
+            'title' => "required|max:50|unique:articles,title,$article->id",
+            'slug' => 'required',
+            'small_summary' => 'required|max:300',
+            'large_summary' => 'string|max:500'
+        ]);
+
+        $asd = $validated['slug'];
+
+
+        $validated['slug'] = Str::slug($validated['slug']);
+
+        $article->update($validated);
+
+        return $asd;
+    }
 }
