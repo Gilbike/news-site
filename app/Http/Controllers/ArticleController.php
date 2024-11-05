@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Section;
 use Illuminate\Http\Request;
+use Str;
 
 class ArticleController extends Controller
 {
@@ -29,5 +30,24 @@ class ArticleController extends Controller
         $sections = Section::all();
 
         return inertia('Article/Create', ['sections' => $sections]);
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|max:50|unique:articles',
+            'section_id' => 'required|exists:sections,id',
+            'small_summary' => 'required|max:300',
+            'large_summary' => 'string|max:500'
+        ]);
+
+        $section = Section::find($validated['section_id']);
+
+        $validated['journalist_id'] = $request->user()->id;
+        $validated['slug'] = Str::slug($validated['title']);
+
+        $section->articles()->create($validated);
+
+        return redirect()->route('dashboard');
     }
 }
