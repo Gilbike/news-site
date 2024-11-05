@@ -23,4 +23,11 @@ class ArticleController extends Controller
             'author' => $article->author()->first(['name', 'firstname', 'lastname', 'title'])
         ]);
     }
+
+    public function create()
+    {
+        $sections = Section::all();
+
+        return inertia('Article/Create', ['sections' => $sections]);
+    }
 }
