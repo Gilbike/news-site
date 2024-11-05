@@ -21,6 +21,10 @@ Route::post('/article/create', [ArticleController::class, 'store'])
     ->middleware('auth')
     ->name('article.store');
 
+Route::get('/article/{article}/edit', [ArticleController::class, 'edit'])
+    ->middleware('auth')
+    ->name('article.edit');
+
 require __DIR__ . '/auth.php';
 require __DIR__ . '/dashboard.php';
 

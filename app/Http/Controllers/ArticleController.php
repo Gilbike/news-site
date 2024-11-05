@@ -50,4 +50,9 @@ class ArticleController extends Controller
 
         return redirect()->route('dashboard');
     }
+
+    public function edit(Article $article)
+    {
+        return inertia('Article/Edit', ['article' => $article]);
+    }
 }
