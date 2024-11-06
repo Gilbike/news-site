@@ -65,13 +65,10 @@ class ArticleController extends Controller
             'large_summary' => 'string|max:500'
         ]);
 
-        $asd = $validated['slug'];
-
-
         $validated['slug'] = Str::slug($validated['slug']);
 
         $article->update($validated);
 
-        return $asd;
+        return redirect()->route('dashboard');
     }
 }
