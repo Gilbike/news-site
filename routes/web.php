@@ -29,6 +29,10 @@ Route::patch('/article/{article}/edit', [ArticleController::class, 'update'])
     ->middleware('auth')
     ->name('article.update');
 
+Route::delete('/article/{article}', [ArticleController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('article.destroy');
+
 require __DIR__ . '/auth.php';
 require __DIR__ . '/dashboard.php';
 

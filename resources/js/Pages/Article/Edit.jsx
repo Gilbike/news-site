@@ -2,8 +2,9 @@ import Button from "@/Components/Button";
 import FormInput from "@/Components/FormInput";
 import TextArea from "@/Components/TextArea";
 import DashboardLayout from "@/Layouts/DashboardLayout";
-import { useForm } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 import { useState } from "react";
+import { MdDelete } from "react-icons/md";
 
 export default function Edit({ article }) {
     const { data, setData, errors, processing, patch } = useForm({
@@ -25,7 +26,18 @@ export default function Edit({ article }) {
 
     return (
         <DashboardLayout>
-            <h1 className="font-bold text-2xl mb-2">Edit article</h1>
+            <div className="flex flex-row justify-between mb-2">
+                <h1 className="font-bold text-2xl mb-2">Edit article</h1>
+                <Link
+                    className="flex flex-row gap-1 items-center py-1 px-2 bg-red-500 hover:bg-red-600 rounded-md text-white"
+                    method="delete"
+                    as="button"
+                    href={route("article.destroy", { article: article.id })}
+                >
+                    <MdDelete />
+                    Delete
+                </Link>
+            </div>
             <div className="bg-white rounded-lg shadow p-6">
                 <h2 className="font-bold text-xl">Article header</h2>
                 <div className="flex flex-col gap-2 mt-3 w-full">

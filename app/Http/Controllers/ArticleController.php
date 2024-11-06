@@ -71,4 +71,15 @@ class ArticleController extends Controller
 
         return redirect()->route('dashboard');
     }
+
+    public function destroy(Request $request, Article $article)
+    {
+        if (!$request->user()->editor && $article->author()->is($request->user())) {
+            abort(403);
+        }
+
+        $article->delete();
+
+        return redirect()->route('dashboard');
+    }
 }
