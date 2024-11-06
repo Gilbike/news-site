@@ -35,10 +35,10 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|max:50|unique:articles',
+            'title' => 'required|max:150|unique:articles',
             'section_id' => 'required|exists:sections,id',
-            'small_summary' => 'required|max:300',
-            'large_summary' => 'string|max:500'
+            'small_summary' => 'required|max:800',
+            'large_summary' => 'string|max:1500'
         ]);
 
         $section = Section::find($validated['section_id']);
@@ -59,10 +59,10 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article)
     {
         $validated = $request->validate([
-            'title' => "required|max:50|unique:articles,title,$article->id",
+            'title' => "required|max:150|unique:articles,title,$article->id",
             'slug' => 'required',
-            'small_summary' => 'required|max:300',
-            'large_summary' => 'string|max:500'
+            'small_summary' => 'required|max:800',
+            'large_summary' => 'string|max:1500'
         ]);
 
         $validated['slug'] = Str::slug($validated['slug']);
