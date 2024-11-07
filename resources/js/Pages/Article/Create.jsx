@@ -1,3 +1,4 @@
+import ArticleContentEditor from "@/Components/ArticleContentEditor";
 import Button from "@/Components/Button";
 import FormInput from "@/Components/FormInput";
 import Select from "@/Components/Select";
@@ -93,6 +94,8 @@ export default function Create({ sections }) {
                     </div>
                 </div>
             </div>
+
+            <ArticleContentEditor />
 
             <Button className="w-full mt-3" onClick={submitArticle}>
                 Save
