@@ -13,7 +13,7 @@ export default function DashboardNavbar() {
     return (
         <div className="px-4 py-3 bg-white shadow flex flex-row items-center justify-between z-10">
             <div className="flex flex-row items-center gap-10">
-                <Link href={route("dashboard")}>News Site</Link>
+                <Link href={route("home")}>News Site</Link>
                 <div className="flex flex-row items-center gap-4">
                     <DashboardNavbarButton to="dashboard" label="Dashboard" />
                     <DashboardNavbarButton
