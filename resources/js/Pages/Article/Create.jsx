@@ -97,10 +97,7 @@ export default function Create({ sections }) {
             </div>
 
             <ArticleContentEditor
-                onChangeHandler={(text) => {
-                    console.log(text);
-                    setData("content", text);
-                }}
+                onChangeHandler={(text) => setData("content", text)}
             />
 
             <Button className="w-full mt-3" onClick={submitArticle}>
