@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { FaParagraph } from "react-icons/fa";
 
-export default function ArticleContentEditor() {
+export default function ArticleContentEditor({ onChangeHandler }) {
     const areaRef = useRef(null);
 
     const onChange = (e) => {
@@ -12,6 +12,8 @@ export default function ArticleContentEditor() {
                 ? 138
                 : areaRef.current.scrollHeight;
         areaRef.current.style.height = `${calculatedHeight}px`;
+
+        onChangeHandler?.(areaRef.current.value);
     };
 
     const identifiers = {

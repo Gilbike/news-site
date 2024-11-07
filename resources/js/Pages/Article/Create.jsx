@@ -19,6 +19,7 @@ export default function Create({ sections }) {
         section_id: undefined,
         small_summary: "",
         large_summary: "",
+        content: "",
     });
 
     const submitArticle = () => {
@@ -95,7 +96,12 @@ export default function Create({ sections }) {
                 </div>
             </div>
 
-            <ArticleContentEditor />
+            <ArticleContentEditor
+                onChangeHandler={(text) => {
+                    console.log(text);
+                    setData("content", text);
+                }}
+            />
 
             <Button className="w-full mt-3" onClick={submitArticle}>
                 Save

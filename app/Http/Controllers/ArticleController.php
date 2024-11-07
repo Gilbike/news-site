@@ -38,7 +38,8 @@ class ArticleController extends Controller
             'title' => 'required|max:150|unique:articles',
             'section_id' => 'required|exists:sections,id',
             'small_summary' => 'required|max:800',
-            'large_summary' => 'string|max:1500'
+            'large_summary' => 'string|max:1500',
+            'content' => ''
         ]);
 
         $section = Section::find($validated['section_id']);

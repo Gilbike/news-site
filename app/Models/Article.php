@@ -11,7 +11,14 @@ class Article extends Model
     /** @use HasFactory<\Database\Factories\ArticleFactory> */
     use HasFactory;
 
-    protected $fillable = ['title', 'slug', 'small_summary', 'large_summary', 'journalist_id'];
+    protected $fillable = [
+        'title',
+        'slug',
+        'content',
+        'small_summary',
+        'large_summary',
+        'journalist_id'
+    ];
 
     public function author(): BelongsTo
     {
