@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SectionController;
 use App\Models\Article;
 use Illuminate\Foundation\Application;
@@ -9,9 +10,9 @@ use Inertia\Inertia;
 
 Route::get('/', [ArticleController::class, 'index'])->name('home');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware('auth')
+    ->name('dashboard');
 
 Route::get('/article/create', [ArticleController::class, 'create'])
     ->middleware('auth')
