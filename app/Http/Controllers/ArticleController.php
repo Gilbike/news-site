@@ -18,10 +18,16 @@ class ArticleController extends Controller
 
     public function show(Section $section, Article $article)
     {
+        $paragraphs = Str::of($article->content)
+            ->explode(':p')
+            ->filter(fn($line) => trim($line) != "")
+            ->values()->map(fn($line) => str_replace(["\r\n", "\r", "\n"], '', $line));
+
         return inertia('Article', [
             'article' => $article,
             'section' => $section,
-            'author' => $article->author()->first(['name', 'firstname', 'lastname', 'title'])
+            'author' => $article->author()->first(['name', 'firstname', 'lastname', 'title']),
+            'paragraphs' => $paragraphs,
         ]);
     }
 

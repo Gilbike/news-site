@@ -1,7 +1,7 @@
 import Layout from "@/Layouts/Layout";
 import { Link } from "@inertiajs/react";
 
-export default function Article({ article, section, author }) {
+export default function Article({ article, section, author, paragraphs }) {
     return (
         <Layout page={article.title}>
             <Link href={`/${section.name}`} className="italic font-light">
@@ -25,6 +25,9 @@ export default function Article({ article, section, author }) {
                     {article.large_summary}
                 </p>
             )}
+            {paragraphs.map((paragraph) => (
+                <p className="mt-2">{paragraph}</p>
+            ))}
         </Layout>
     );
 }
