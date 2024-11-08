@@ -1,7 +1,10 @@
 import { useRef } from "react";
 import { FaParagraph } from "react-icons/fa";
 
-export default function ArticleContentEditor({ onChangeHandler }) {
+export default function ArticleContentEditor({
+    initialValue,
+    onChangeHandler,
+}) {
     const areaRef = useRef(null);
 
     const onChange = (e) => {
@@ -38,6 +41,7 @@ export default function ArticleContentEditor({ onChangeHandler }) {
                 </button>
             </div>
             <textarea
+                defaultValue={initialValue}
                 ref={areaRef}
                 rows={5}
                 className="w-full resize-none border border-neutral-600 p-2 rounded-md"

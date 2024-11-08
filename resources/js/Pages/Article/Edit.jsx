@@ -1,3 +1,4 @@
+import ArticleContentEditor from "@/Components/ArticleContentEditor";
 import Button from "@/Components/Button";
 import FormInput from "@/Components/FormInput";
 import TextArea from "@/Components/TextArea";
@@ -12,6 +13,7 @@ export default function Edit({ article }) {
         slug: article.slug,
         small_summary: article.small_summary,
         large_summary: article.large_summary,
+        content: article.content,
     });
 
     const [customSlug, setCustomSlug] = useState("");
@@ -102,6 +104,11 @@ export default function Edit({ article }) {
                     </div>
                 </div>
             </div>
+
+            <ArticleContentEditor
+                initialValue={data.content}
+                onChangeHandler={(text) => setData("content", text)}
+            />
 
             <Button
                 disabled={processing}

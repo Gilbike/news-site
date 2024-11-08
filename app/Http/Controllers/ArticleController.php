@@ -69,7 +69,8 @@ class ArticleController extends Controller
             'title' => "required|max:150|unique:articles,title,$article->id",
             'slug' => 'required',
             'small_summary' => 'required|max:800',
-            'large_summary' => 'string|max:1500'
+            'large_summary' => 'string|max:1500',
+            'content' => ''
         ]);
 
         $validated['slug'] = Str::slug($validated['slug']);
