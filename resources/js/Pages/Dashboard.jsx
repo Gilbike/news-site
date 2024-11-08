@@ -13,7 +13,7 @@ export default function Dashboard({ articles }) {
                     articles.map((article) => (
                         <div
                             key={article.id}
-                            className="flex flex-row items-center mb-2 last:mb-0 justify-between"
+                            className="flex flex-row items-center gap-1 mb-2 last:mb-0 justify-between p-2 border border-neutral-200 rounded-md"
                         >
                             <p>{article.title}</p>
                             <Link
