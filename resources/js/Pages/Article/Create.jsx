@@ -102,7 +102,11 @@ export default function Create({ sections }) {
                 onChangeHandler={(text) => setData("content", text)}
             />
 
-            <Button className="w-full mt-3" onClick={submitArticle}>
+            <Button
+                disabled={processing}
+                className="w-full mt-3"
+                onClick={submitArticle}
+            >
                 Save
             </Button>
         </DashboardLayout>
