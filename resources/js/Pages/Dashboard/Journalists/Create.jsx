@@ -17,7 +17,7 @@ export default function Create() {
     };
 
     return (
-        <DashboardLayout>
+        <DashboardLayout page="Add journalist">
             <div className="bg-white rounded-lg shadow p-6">
                 <h2 className="font-bold text-xl mb-6">Hire new journalist</h2>
                 <form className="flex flex-col gap-2 w-full" onSubmit={submit}>

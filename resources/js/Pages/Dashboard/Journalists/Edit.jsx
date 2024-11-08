@@ -19,7 +19,7 @@ export default function Edit({ journalist }) {
     };
 
     return (
-        <DashboardLayout>
+        <DashboardLayout page="Edit journalist">
             <div className="bg-white rounded-lg shadow p-6">
                 <h2 className="font-bold text-xl mb-6">Edit {fullName}</h2>
                 <form onSubmit={submit}>

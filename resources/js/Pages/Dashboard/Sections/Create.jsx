@@ -16,7 +16,7 @@ export default function Create() {
     };
 
     return (
-        <DashboardLayout>
+        <DashboardLayout page="Create section">
             <div className="bg-white rounded-lg shadow p-6">
                 <h2 className="font-bold text-xl mb-3">Create new section</h2>
                 <form className="flex flex-col gap-2 w-full" onSubmit={submit}>

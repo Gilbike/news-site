@@ -27,7 +27,9 @@ export default function Create({ sections }) {
     };
 
     return (
-        <DashboardLayout>
+        <DashboardLayout
+            page={data.title ? `Draft: ${data.title}` : "Write article"}
+        >
             <div className="bg-white rounded-lg shadow p-6">
                 <h2 className="font-bold text-xl">Article header</h2>
                 <div className="flex flex-col gap-2 mt-3 w-full">

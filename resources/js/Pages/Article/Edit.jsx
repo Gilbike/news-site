@@ -25,7 +25,7 @@ export default function Edit({ article }) {
     };
 
     return (
-        <DashboardLayout>
+        <DashboardLayout page={`Edit: ${data.title}`}>
             <div className="flex flex-row justify-between mb-2">
                 <h1 className="font-bold text-2xl mb-2">Edit article</h1>
                 <Link

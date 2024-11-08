@@ -3,7 +3,7 @@ import Layout from "@/Layouts/Layout";
 
 export default function Section({ sectionName, articles }) {
     return (
-        <Layout page="Home">
+        <Layout page={sectionName}>
             <h2 className="text-2xl font-bold">Latest {sectionName} news</h2>
             {articles.map((article) => (
                 <ArticleDisplay
