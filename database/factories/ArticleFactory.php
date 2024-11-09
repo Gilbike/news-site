@@ -18,6 +18,7 @@ class ArticleFactory extends Factory
     {
         return [
             'title' => fake()->realText(50),
+            'slug' => fake()->word(),
             'small_summary' => fake()->realText(300),
             'large_summary' => fake()->boolean() ? fake()->realText(1000) : null,
         ];
