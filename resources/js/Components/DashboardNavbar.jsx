@@ -11,10 +11,10 @@ export default function DashboardNavbar() {
     const toggleProfileOpen = () => setProfileOpen(!profileOpen);
 
     return (
-        <div className="px-4 py-3 bg-white shadow flex flex-row items-center justify-between z-10">
-            <div className="flex flex-row items-center gap-10">
+        <div className="px-4 py-3 bg-white shadow flex flex-col md:flex-row items-center justify-between z-10">
+            <div className="flex flex-col md:flex-row items-center gap-10">
                 <Link href={route("home")}>News Site</Link>
-                <div className="flex flex-row items-center gap-4">
+                <div className="flex flex-col md:flex-row items-center gap-4">
                     <DashboardNavbarButton to="dashboard" label="Dashboard" />
                     <DashboardNavbarButton
                         to="journalists.index"
@@ -27,7 +27,7 @@ export default function DashboardNavbar() {
                 </div>
             </div>
 
-            <div className="flex flex-row gap-4">
+            <div className="flex flex-col md:flex-row md:mt-0 mt-8 gap-1 md:gap-4">
                 <Link
                     href={route("article.create")}
                     className="flex flex-row gap-2 items-center hover:bg-neutral-100 px-3 py-2 rounded-lg"
