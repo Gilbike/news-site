@@ -82,7 +82,7 @@ class ArticleController extends Controller
 
     public function destroy(Request $request, Article $article)
     {
-        if (!$request->user()->editor && $article->author()->is($request->user())) {
+        if (!$request->user()->editor && !$article->author()->is($request->user())) {
             abort(403);
         }
 
