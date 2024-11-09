@@ -69,9 +69,11 @@ class JournalistController extends Controller implements HasMiddleware
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show(User $journalist)
     {
-        //
+        $articles = $journalist->articles()->with('Section')->get();
+
+        return inertia('Author', ['journalist' => $journalist->only('firstname', 'lastname'), 'articles' => $articles]);
     }
 
     /**

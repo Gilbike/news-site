@@ -11,9 +11,12 @@ export default function Article({ article, section, author, paragraphs }) {
                 {article.title}
             </h1>
             <div className="flex flex-col mb-4">
-                <p className="text-indigo-500 leading-tight">
+                <Link
+                    href={route("author", { journalist: author.name })}
+                    className="text-indigo-500 leading-tight"
+                >
                     {author.firstname} {author.lastname}
-                </p>
+                </Link>
                 {author.title && (
                     <p className="leading-none font-light text-sm italic">
                         {author.title}

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\JournalistController;
 use App\Http\Controllers\SectionController;
 use App\Models\Article;
 use Illuminate\Foundation\Application;
@@ -33,6 +34,9 @@ Route::patch('/article/{article}/edit', [ArticleController::class, 'update'])
 Route::delete('/article/{article}', [ArticleController::class, 'destroy'])
     ->middleware('auth')
     ->name('article.destroy');
+
+Route::get('/author/{journalist:name}', [JournalistController::class, 'show'])
+    ->name('author');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/dashboard.php';
