@@ -29,7 +29,9 @@ export default function Article({ article, section, author, paragraphs }) {
                 </p>
             )}
             {paragraphs.map((paragraph) => (
-                <p className="mt-2">{paragraph}</p>
+                <p key={paragraph} className="mt-2">
+                    {paragraph}
+                </p>
             ))}
         </Layout>
     );

@@ -6,7 +6,11 @@ export default function Home({ articles }) {
         <Layout page="Home">
             <h2 className="text-2xl font-bold">Latest news</h2>
             {articles.map((article) => (
-                <ArticleDisplay {...article} section={article.section.name} />
+                <ArticleDisplay
+                    key={article.id}
+                    {...article}
+                    section={article.section.name}
+                />
             ))}
         </Layout>
     );
