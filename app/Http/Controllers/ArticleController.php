@@ -11,7 +11,9 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::orderBy('created_at', 'desc')->with('Section')->get();
+        $articles = Article::orderBy('created_at', 'desc')
+            ->with('Section')
+            ->paginate(25);
 
         return inertia('Home', ['articles' => $articles]);
     }
