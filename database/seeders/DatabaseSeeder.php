@@ -16,17 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $sections = Section::factory(5)->create();
-
-        User::factory()
-            ->create([
-                'name' => 'admin',
-                'email' => 'admin@news.com',
-                'password' => bcrypt('admin'),
-                'firstname' => 'Journalist',
-                'lastname' => 'Name',
-                'editor' => true,
-            ]);
+        $sections = Section::factory(3)->create();
 
         User::factory(5)
             ->has(
