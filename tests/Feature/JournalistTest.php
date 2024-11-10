@@ -9,6 +9,14 @@ test('journalists page can be rendered', function () {
     $response->assertStatus(200);
 });
 
+test('author page can be rendered', function () {
+    $user = User::factory()->create();
+
+    $response = $this->get("/author/$user->name");
+
+    $response->assertOk();
+});
+
 describe('editor', function () {
     test('can view create page', function () {
         $user = User::factory()->create(['editor' => true]);
