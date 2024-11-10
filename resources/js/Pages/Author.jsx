@@ -1,15 +1,14 @@
 import ArticleDisplay from "@/Components/ArticleDisplay";
+import Pagination from "@/Components/Pagination";
 import Layout from "@/Layouts/Layout";
 
 export default function Author({ journalist, articles }) {
-    console.log(articles);
-
     return (
         <Layout page={`${journalist.firstname} ${journalist.lastname}`}>
             <h1 className="font-bold text-2xl">
                 {journalist.firstname} {journalist.lastname}
             </h1>
-            {articles.map((article) => (
+            {articles.data.map((article) => (
                 <ArticleDisplay
                     {...article}
                     section={article.section.name}
@@ -17,6 +16,7 @@ export default function Author({ journalist, articles }) {
                     key={article.slug}
                 />
             ))}
+            <Pagination links={articles.links} />
         </Layout>
     );
 }

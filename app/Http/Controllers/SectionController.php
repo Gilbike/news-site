@@ -55,7 +55,10 @@ class SectionController extends Controller implements HasMiddleware
      */
     public function show(Section $section)
     {
-        $articles = $section->articles()->orderByDesc('created_at')->get();
+        $articles = $section
+            ->articles()
+            ->orderByDesc('created_at')
+            ->paginate(15);
 
         return inertia('Section', ['sectionName' => $section->name, 'articles' => $articles]);
     }
