@@ -30,7 +30,10 @@ export default function Navbar() {
                         </button>
                         <h2 className="font-bold text-xl mb-1">Sections</h2>
                         {sections.map((section) => (
-                            <Link href={`/${section.name}`}>
+                            <Link
+                                className="block hover:underline"
+                                href={`/${section.name}`}
+                            >
                                 {section.name}
                             </Link>
                         ))}
