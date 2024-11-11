@@ -46,7 +46,8 @@ Route::get('/{section:name}/{article:slug}', [ArticleController::class, 'show'])
     ->middleware('published');
 
 Route::get('/{section:name}/{article:slug}/draft', [ArticleController::class, 'show'])
-    ->middleware('auth');
+    ->middleware('auth')
+    ->name('article.draft');
 
 Route::post('/{section:name}/{article:slug}/publish', [ArticleController::class, 'publish'])
     ->middleware(['auth', 'editor'])
