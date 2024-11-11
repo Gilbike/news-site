@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JournalistController;
+use App\Http\Controllers\RssFeedController;
 use App\Http\Controllers\SectionController;
 use App\Models\Article;
 use Illuminate\Foundation\Application;
@@ -10,6 +11,9 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [ArticleController::class, 'index'])->name('home');
+
+Route::get('/rss', [RssFeedController::class, 'index'])
+    ->name('rss');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware('auth')
