@@ -44,3 +44,10 @@ require __DIR__ . '/dashboard.php';
 Route::get('/{section:name}', [SectionController::class, 'show']);
 Route::get('/{section:name}/{article:slug}', [ArticleController::class, 'show'])
     ->middleware('published');
+
+Route::get('/{section:name}/{article:slug}/draft', [ArticleController::class, 'show'])
+    ->middleware('auth');
+
+Route::post('/{section:name}/{article:slug}/publish', [ArticleController::class, 'publish'])
+    ->middleware(['auth', 'editor'])
+    ->name('article.publish');

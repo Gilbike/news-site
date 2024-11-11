@@ -19,7 +19,7 @@ class ArticleController extends Controller
         return inertia('Home', ['articles' => $articles]);
     }
 
-    public function show(Section $section, Article $article)
+    public function show(Request $request, Section $section, Article $article)
     {
         $paragraphs = Str::of($article->content)
             ->explode(':p')
@@ -31,6 +31,7 @@ class ArticleController extends Controller
             'section' => $section,
             'author' => $article->author()->first(['name', 'firstname', 'lastname', 'title']),
             'paragraphs' => $paragraphs,
+            'isDraft' => last($request->segments()) == 'draft'
         ]);
     }
 
@@ -92,5 +93,13 @@ class ArticleController extends Controller
         $article->delete();
 
         return redirect()->route('dashboard');
+    }
+
+    public function publish(Section $section, Article $article)
+    {
+        $article->published = true;
+        $article->save();
+
+        return redirect('/');
     }
 }
