@@ -57,6 +57,7 @@ class SectionController extends Controller implements HasMiddleware
     {
         $articles = $section
             ->articles()
+            ->where('published', '=', true)
             ->orderByDesc('created_at')
             ->paginate(15);
 

@@ -74,6 +74,7 @@ class JournalistController extends Controller implements HasMiddleware
         $articles = $journalist
             ->articles()
             ->with('Section')
+            ->where('published', '=', true)
             ->paginate(15);
 
         return inertia('Author', ['journalist' => $journalist->only('firstname', 'lastname'), 'articles' => $articles]);

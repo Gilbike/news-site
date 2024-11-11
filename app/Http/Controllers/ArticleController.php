@@ -13,6 +13,7 @@ class ArticleController extends Controller
     {
         $articles = Article::orderBy('created_at', 'desc')
             ->with('Section')
+            ->where('published', '=', true)
             ->paginate(25);
 
         return inertia('Home', ['articles' => $articles]);
