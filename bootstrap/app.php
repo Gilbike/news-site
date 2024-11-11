@@ -15,7 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\HandleInertiaRequests::class,
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
         ]);
-        $middleware->alias(["editor" => App\Http\Middleware\IsEditor::class]);
+        $middleware->alias([
+            "editor" => App\Http\Middleware\IsEditor::class,
+            "published" => App\Http\Middleware\IsPublished::class,
+        ]);
 
         //
     })
