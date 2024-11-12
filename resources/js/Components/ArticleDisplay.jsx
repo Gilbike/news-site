@@ -8,7 +8,7 @@ export default function ArticleDisplay({
     showSection = true,
 }) {
     return (
-        <Link href={`/${section}/${slug}`} className="my-2 block">
+        <div className="my-2">
             {showSection && (
                 <Link
                     href={`/${section}`}
@@ -17,10 +17,12 @@ export default function ArticleDisplay({
                     {section}
                 </Link>
             )}
-            <h3 className="font-semibold text-xl hover:text-neutral-800">
-                {title}
-            </h3>
-            <p className="text-neutral-800">{small_summary}</p>
-        </Link>
+            <Link href={`/${section}/${slug}`} className="block">
+                <h3 className="font-semibold text-xl hover:text-neutral-800">
+                    {title}
+                </h3>
+                <p className="text-neutral-800">{small_summary}</p>
+            </Link>
+        </div>
     );
 }
