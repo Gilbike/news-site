@@ -25,7 +25,8 @@ class ArticleFactory extends Factory
             'slug' => Str::of($title),
             'small_summary' => fake()->realText(300),
             'large_summary' => fake()->boolean() ? fake()->realText(1000) : null,
-            'content' => $content
+            'content' => $content,
+            'published' => 1,
         ];
     }
 
