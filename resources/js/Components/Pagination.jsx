@@ -5,6 +5,7 @@ export default function Pagination({ links }) {
         <div className="m-auto w-fit gap-2">
             {links.map((link) => (
                 <Link
+                    key={link.label}
                     href={link.url}
                     className={`${
                         link.active && "bg-indigo-500 text-white"
