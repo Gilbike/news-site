@@ -73,3 +73,35 @@ test('can delete article', function () {
     expect(fn() => $article->refresh())
         ->toThrow(Illuminate\Database\Eloquent\ModelNotFoundException::class);
 });
+
+test('visitor can\'t view draft article', function () {
+    $author = User::factory()->create();
+    $section = Section::factory()->create(['name' => 'economy']);
+    $article = Article::factory()->create(['slug' => 'dummy-slug', 'section_id' => $section->id, 'journalist_id' => $author->id, 'published' => false]);
+
+    $response = $this->get("/$section->name/$article->slug");
+
+    $response->assertRedirect('/');
+});
+
+test('editor can view draft article', function () {
+    $author = User::factory()->create(['editor' => true]);
+    $section = Section::factory()->create(['name' => 'economy']);
+    $article = Article::factory()->create(['slug' => 'dummy-slug', 'section_id' => $section->id, 'journalist_id' => $author->id, 'published' => false]);
+
+    $response = $this->actingAs($author)->get("/$section->name/$article->slug/draft");
+
+    $response->assertOk();
+});
+
+test('editor can publish', function () {
+    $author = User::factory()->create(['editor' => true]);
+    $section = Section::factory()->create(['name' => 'economy']);
+    $article = Article::factory()->create(['slug' => 'dummy-slug', 'section_id' => $section->id, 'journalist_id' => $author->id, 'published' => false]);
+
+    $response = $this->actingAs($author)->post("/$section->name/$article->slug/publish");
+
+    $article->refresh();
+
+    expect($article->published == 1)->toBeTrue();
+});
