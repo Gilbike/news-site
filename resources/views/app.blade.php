@@ -7,6 +7,8 @@
 
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
+    <meta name="description" content="Discover the latest and greatest news on News-Site">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

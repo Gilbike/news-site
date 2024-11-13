@@ -9,7 +9,10 @@ export default function Navbar() {
     return (
         <nav className="px-4 py-3 bg-white shadow flex flex-row items-center justify-between z-10">
             <div>
-                <button onClick={() => setSideBarOpen(true)}>
+                <button
+                    aria-label="Navbar"
+                    onClick={() => setSideBarOpen(true)}
+                >
                     <IoMdMenu size={32} />
                 </button>
 

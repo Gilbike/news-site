@@ -12,7 +12,7 @@ export default function ArticleDisplay({
             {showSection && (
                 <Link
                     href={`/${section}`}
-                    className="italic text-sm text-indigo-500"
+                    className="italic md:text-sm text-indigo-600"
                 >
                     {section}
                 </Link>
