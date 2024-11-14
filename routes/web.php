@@ -45,14 +45,14 @@ Route::get('/author/{journalist:name}', [JournalistController::class, 'show'])
 require __DIR__ . '/auth.php';
 require __DIR__ . '/dashboard.php';
 
-Route::get('/{section:name}', [SectionController::class, 'show']);
-Route::get('/{section:name}/{article:slug}', [ArticleController::class, 'show'])
+Route::get('/{section:slug}', [SectionController::class, 'show']);
+Route::get('/{section:slug}/{article:slug}', [ArticleController::class, 'show'])
     ->middleware('published');
 
-Route::get('/{section:name}/{article:slug}/draft', [ArticleController::class, 'show'])
+Route::get('/{section:slug}/{article:slug}/draft', [ArticleController::class, 'show'])
     ->middleware('auth')
     ->name('article.draft');
 
-Route::post('/{section:name}/{article:slug}/publish', [ArticleController::class, 'publish'])
+Route::post('/{section:slug}/{article:slug}/publish', [ArticleController::class, 'publish'])
     ->middleware(['auth', 'editor'])
     ->name('article.publish');
