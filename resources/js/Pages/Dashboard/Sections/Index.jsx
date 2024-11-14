@@ -35,35 +35,40 @@ export default function Index({ sections }) {
                     )}
                 </div>
 
-                <table className="w-full rounded overflow-hidden">
-                    <thead className="bg-neutral-100">
-                        <tr>
-                            <TableSortColumn
-                                label="Name"
-                                orderColumn="name"
-                                orderBy="name"
-                                orderDirection={orderDirection}
-                                handleMethod={onHeadingClick}
-                            />
-                            {usePage().props.auth.user.editor == true && (
-                                <th className="w-1/4">Action</th>
-                            )}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {sections.length != 0 ? (
-                            sections.map((section) => (
-                                <SectionRow key={section.id} {...section} />
-                            ))
-                        ) : (
-                            <tr className="odd:bg-neutral-50">
-                                <td colSpan={2} className="py-2 text-center">
-                                    No sections found
-                                </td>
+                <div className="overflow-auto">
+                    <table className="w-full rounded overflow-hidden">
+                        <thead className="bg-neutral-100">
+                            <tr>
+                                <TableSortColumn
+                                    label="Name"
+                                    orderColumn="name"
+                                    orderBy="name"
+                                    orderDirection={orderDirection}
+                                    handleMethod={onHeadingClick}
+                                />
+                                {usePage().props.auth.user.editor == true && (
+                                    <th className="w-1/4">Action</th>
+                                )}
                             </tr>
-                        )}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {sections.length != 0 ? (
+                                sections.map((section) => (
+                                    <SectionRow key={section.id} {...section} />
+                                ))
+                            ) : (
+                                <tr className="odd:bg-neutral-50">
+                                    <td
+                                        colSpan={2}
+                                        className="py-2 text-center"
+                                    >
+                                        No sections found
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </DashboardLayout>
     );

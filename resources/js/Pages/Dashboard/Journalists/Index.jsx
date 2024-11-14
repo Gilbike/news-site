@@ -38,46 +38,48 @@ export default function Index({ journalists }) {
                     )}
                 </div>
 
-                <table className="w-full rounded overflow-hidden">
-                    <thead className="bg-neutral-100">
-                        <tr>
-                            <TableSortColumn
-                                label="#"
-                                orderColumn="id"
-                                orderBy={orderBy}
-                                orderDirection={orderDirection}
-                                handleMethod={onHeadingClick}
-                            />
-                            <TableSortColumn
-                                label="Name"
-                                orderColumn="name"
-                                orderBy={orderBy}
-                                orderDirection={orderDirection}
-                                handleMethod={onHeadingClick}
-                            />
-                            <TableSortColumn
-                                label="Email"
-                                orderColumn="email"
-                                orderBy={orderBy}
-                                orderDirection={orderDirection}
-                                handleMethod={onHeadingClick}
-                            />
-                            <th className="text-left">Editor?</th>
-                            <th className="text-left">Title</th>
-                            {usePage().props.auth.user.editor == true && (
-                                <th>Action</th>
-                            )}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {journalists.map((journalist) => (
-                            <JournalistRow
-                                key={journalist.id}
-                                {...journalist}
-                            />
-                        ))}
-                    </tbody>
-                </table>
+                <div className="overflow-auto">
+                    <table className="w-full rounded overflow-hidden">
+                        <thead className="bg-neutral-100">
+                            <tr>
+                                <TableSortColumn
+                                    label="#"
+                                    orderColumn="id"
+                                    orderBy={orderBy}
+                                    orderDirection={orderDirection}
+                                    handleMethod={onHeadingClick}
+                                />
+                                <TableSortColumn
+                                    label="Name"
+                                    orderColumn="name"
+                                    orderBy={orderBy}
+                                    orderDirection={orderDirection}
+                                    handleMethod={onHeadingClick}
+                                />
+                                <TableSortColumn
+                                    label="Email"
+                                    orderColumn="email"
+                                    orderBy={orderBy}
+                                    orderDirection={orderDirection}
+                                    handleMethod={onHeadingClick}
+                                />
+                                <th className="text-left">Editor?</th>
+                                <th className="text-left">Title</th>
+                                {usePage().props.auth.user.editor == true && (
+                                    <th>Action</th>
+                                )}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {journalists.map((journalist) => (
+                                <JournalistRow
+                                    key={journalist.id}
+                                    {...journalist}
+                                />
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </DashboardLayout>
     );
