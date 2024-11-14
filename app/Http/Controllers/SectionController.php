@@ -8,6 +8,7 @@ use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Str;
 
 class SectionController extends Controller implements HasMiddleware
 {
@@ -44,6 +45,7 @@ class SectionController extends Controller implements HasMiddleware
     public function store(StoreSectionRequest $request)
     {
         $validated = $request->validated();
+        $validated['slug'] = Str::slug($validated['name']);
 
         Section::create($validated);
 
@@ -78,6 +80,7 @@ class SectionController extends Controller implements HasMiddleware
     public function update(UpdateSectionRequest $request, Section $section)
     {
         $validated = $request->validated();
+        $validated['slug'] = Str::slug($validated['name']);
 
         $section->update($validated);
 

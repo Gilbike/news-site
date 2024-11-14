@@ -11,7 +11,7 @@ class Section extends Model
     /** @use HasFactory<\Database\Factories\SectionFactory> */
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'slug'];
 
     public function articles(): HasMany
     {
