@@ -11,7 +11,7 @@ export default function Home({ articles }) {
                 <ArticleDisplay
                     key={article.id}
                     {...article}
-                    section={article.section.name}
+                    section={article.section}
                 />
             ))}
             <Pagination links={articles.links} />

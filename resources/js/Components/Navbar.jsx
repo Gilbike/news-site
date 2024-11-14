@@ -34,8 +34,9 @@ export default function Navbar() {
                         <h2 className="font-bold text-xl mb-1">Sections</h2>
                         {sections.map((section) => (
                             <Link
+                                key={section.slug}
                                 className="block hover:underline"
-                                href={`/${section.name}`}
+                                href={`/${section.slug}`}
                             >
                                 {section.name}
                             </Link>

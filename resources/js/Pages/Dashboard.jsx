@@ -52,7 +52,7 @@ export default function Dashboard({ articles, drafts }) {
                                 className="flex flex-row gap-1 items-center px-2 py-1 bg-yellow-500 hover:bg-yellow-600 rounded-md text-white"
                                 href={route("article.draft", {
                                     article: draft.slug,
-                                    section: draft.section.name,
+                                    section: draft.section,
                                 })}
                             >
                                 <MdOutlineRateReview />

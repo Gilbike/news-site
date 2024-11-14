@@ -11,7 +11,7 @@ export default function Author({ journalist, articles }) {
             {articles.data.map((article) => (
                 <ArticleDisplay
                     {...article}
-                    section={article.section.name}
+                    section={article.section}
                     showSection={true}
                     key={article.slug}
                 />

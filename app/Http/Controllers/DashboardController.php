@@ -17,7 +17,7 @@ class DashboardController extends Controller
 
         if ($request->user()->editor) {
             $draftArticles = Article::where('published', false)->orderBy('created_at', 'desc')
-                ->with('Section:id,name')
+                ->with('Section:id,name,slug')
                 ->limit(10)
                 ->get([
                     'id',

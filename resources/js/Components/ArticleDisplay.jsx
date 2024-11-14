@@ -11,13 +11,13 @@ export default function ArticleDisplay({
         <div className="my-2">
             {showSection && (
                 <Link
-                    href={`/${section}`}
+                    href={`/${section.slug}`}
                     className="italic md:text-sm text-indigo-600"
                 >
-                    {section}
+                    {section.name}
                 </Link>
             )}
-            <Link href={`/${section}/${slug}`} className="block">
+            <Link href={`/${section.slug}/${slug}`} className="block">
                 <h3 className="font-semibold text-xl hover:text-neutral-800">
                     {title}
                 </h3>
