@@ -16,8 +16,11 @@ class SectionFactory extends Factory
      */
     public function definition(): array
     {
+        $name = fake()->word();
+
         return [
-            "name" => fake()->word()
+            "name" => $name,
+            "slug" => $name
         ];
     }
 }
