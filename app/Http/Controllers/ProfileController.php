@@ -38,4 +38,15 @@ class ProfileController extends Controller
 
         return back();
     }
+
+    public function pictureUpdate(Request $request)
+    {
+        $user = $request->user();
+        $image = base64_encode(file_get_contents($request->file('profilepicture')->path()));
+
+        $user->profilepicture = $image;
+        $user->save();
+
+        return back();
+    }
 }

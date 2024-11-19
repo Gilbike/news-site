@@ -17,6 +17,9 @@ Route::middleware('auth')->group(function () {
   Route::put('/journalists/profile/change-password', [PasswordController::class, 'update'])
     ->name('profile.password.update');
 
+  Route::post('/profile/picture', [ProfileController::class, 'pictureUpdate'])
+    ->name('profile.picture.update');
+
   Route::resource('journalists', JournalistController::class)
     ->except('show');
 
