@@ -29,7 +29,7 @@ class ArticleController extends Controller
         return inertia('Article', [
             'article' => $article,
             'section' => $section,
-            'author' => $article->author()->first(['name', 'firstname', 'lastname', 'title']),
+            'author' => $article->author()->first(['name', 'firstname', 'lastname', 'title', 'profilepicture']),
             'paragraphs' => $paragraphs,
             'isDraft' => last($request->segments()) == 'draft'
         ]);

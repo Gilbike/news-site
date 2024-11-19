@@ -40,18 +40,28 @@ export default function Article({
             <h1 className="text-4xl font-bold border-b border-neutral-400 py-2 mb-4">
                 {article.title}
             </h1>
-            <div className="flex flex-col mb-4">
-                <Link
-                    href={route("author", { journalist: author.name })}
-                    className="text-indigo-500 leading-tight"
-                >
-                    {author.firstname} {author.lastname}
-                </Link>
-                {author.title && (
-                    <p className="leading-none font-light text-sm italic">
-                        {author.title}
-                    </p>
-                )}
+            <div className="flex flex-row gap-2 items-center mb-4">
+                <div className="w-12 h-12 bg-neutral-200 relative">
+                    {author.profilepicture != null && (
+                        <img
+                            src={`data:image/jpg;base64,${author.profilepicture}`}
+                            className="h-full"
+                        />
+                    )}
+                </div>
+                <div className="flex flex-col">
+                    <Link
+                        href={route("author", { journalist: author.name })}
+                        className="text-indigo-500 leading-tight"
+                    >
+                        {author.firstname} {author.lastname}
+                    </Link>
+                    {author.title && (
+                        <p className="leading-none font-light text-sm italic">
+                            {author.title}
+                        </p>
+                    )}
+                </div>
             </div>
             {article.large_summary && (
                 <p className="font-semibold text-lg mb-3">
