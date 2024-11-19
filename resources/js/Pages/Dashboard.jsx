@@ -4,8 +4,6 @@ import { MdEdit } from "react-icons/md";
 import { MdOutlineRateReview } from "react-icons/md";
 
 export default function Dashboard({ articles, drafts }) {
-    console.log(drafts);
-
     return (
         <DashboardLayout page="Dashboard">
             <div className="bg-white rounded-lg shadow p-6">
