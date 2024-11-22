@@ -66,7 +66,7 @@ export default function Index({ journalists }) {
                                 <th className="text-left">Editor?</th>
                                 <th className="text-left">Title</th>
                                 {usePage().props.auth.user.editor == true && (
-                                    <th>Action</th>
+                                    <th></th>
                                 )}
                             </tr>
                         </thead>

@@ -1,7 +1,6 @@
 import { Link, usePage } from "@inertiajs/react";
 import React from "react";
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
+import { MdPerson } from "react-icons/md";
 
 export default function JournalistRow({
     id,
@@ -31,17 +30,7 @@ export default function JournalistRow({
                         href={route("journalists.edit", { journalist: id })}
                         className="rounded p-2 bg-indigo-500 hover:bg-indigo-600 text-white "
                     >
-                        <FaEdit />
-                    </Link>
-                    <Link
-                        href={route("journalists.destroy", {
-                            journalist: id,
-                        })}
-                        className="rounded p-2 bg-red-500 hover:bg-red-600 text-white"
-                        method="delete"
-                        as="button"
-                    >
-                        <MdDelete />
+                        <MdPerson />
                     </Link>
                 </td>
             )}

@@ -117,5 +117,7 @@ class JournalistController extends Controller implements HasMiddleware
         }
 
         $journalist->delete();
+
+        return redirect()->route('journalists.index');
     }
 }

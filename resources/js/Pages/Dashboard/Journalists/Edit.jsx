@@ -1,8 +1,9 @@
 import Button from "@/Components/Button";
 import FormInput from "@/Components/FormInput";
 import DashboardLayout from "@/Layouts/DashboardLayout";
-import { useForm } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 import React from "react";
+import { MdDelete } from "react-icons/md";
 
 export default function Edit({ journalist }) {
     const fullName = `${journalist.firstname} ${journalist.lastname}`;
@@ -45,6 +46,17 @@ export default function Edit({ journalist }) {
 
                     <Button className="mt-3">Save</Button>
                 </form>
+
+                <Link
+                    href={route("journalists.destroy", {
+                        journalist: journalist.id,
+                    })}
+                    className="mt-4 rounded p-2 bg-red-500 hover:bg-red-600 text-white flex flex-row items-center gap-1"
+                    method="delete"
+                    as="button"
+                >
+                    <MdDelete /> Remove
+                </Link>
             </div>
         </DashboardLayout>
     );
