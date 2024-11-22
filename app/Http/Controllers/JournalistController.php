@@ -85,7 +85,9 @@ class JournalistController extends Controller implements HasMiddleware
      */
     public function edit(User $journalist)
     {
-        return inertia('Dashboard/Journalists/Edit', ['journalist' => $journalist]);
+        $articles = $journalist->articles()->orderBy('created_at', 'desc')->paginate(10);
+
+        return inertia('Dashboard/Journalists/Edit', ['journalist' => $journalist, 'articles' => $articles]);
     }
 
     /**

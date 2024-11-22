@@ -1,11 +1,12 @@
 import Button from "@/Components/Button";
 import FormInput from "@/Components/FormInput";
+import Pagination from "@/Components/Pagination";
 import DashboardLayout from "@/Layouts/DashboardLayout";
 import { Link, useForm } from "@inertiajs/react";
 import React from "react";
 import { MdDelete } from "react-icons/md";
 
-export default function Edit({ journalist }) {
+export default function Edit({ journalist, articles }) {
     const fullName = `${journalist.firstname} ${journalist.lastname}`;
 
     const { data, setData, patch } = useForm({
@@ -21,8 +22,20 @@ export default function Edit({ journalist }) {
 
     return (
         <DashboardLayout page="Edit journalist">
+            <h1 className="text-3xl font-bold mb-3">{fullName}</h1>
+            <div className="bg-white rounded-lg shadow p-6 mb-2">
+                <h2 className="font-bold text-xl mb-2">Articles</h2>
+                <div className="mb-2">
+                    {articles.data.map((article) => (
+                        <div className="p-2 border border-neutral-600 roudned [&:not(:last-child)]:border-b-0 first:rounded-t-lg last:rounded-b-lg font-semibold">
+                            {article.title}
+                        </div>
+                    ))}
+                </div>
+                <Pagination links={articles.links} />
+            </div>
             <div className="bg-white rounded-lg shadow p-6">
-                <h2 className="font-bold text-xl mb-6">Edit {fullName}</h2>
+                <h2 className="font-bold text-xl mb-2">Edit {fullName}</h2>
                 <form onSubmit={submit}>
                     <FormInput
                         fieldName="title"
