@@ -26,7 +26,7 @@ class JournalistController extends Controller implements HasMiddleware
         $orderBy = $request->query('ord', 'id');
         $orderDir = $request->query('dir', 'asc');
 
-        $journalists = User::orderBy($orderBy, $orderDir)->get();
+        $journalists = User::orderBy($orderBy, $orderDir)->get(['id', 'email', 'editor', 'firstname', 'lastname', 'name', 'title']);
 
         return inertia("Dashboard/Journalists/Index", [
             "journalists" => $journalists,
@@ -75,7 +75,7 @@ class JournalistController extends Controller implements HasMiddleware
             ->articles()
             ->with('Section')
             ->where('published', '=', true)
-            ->paginate(15);
+            ->paginate(15, ['id', 'section_id', 'title', 'small_summary', 'slug']);
 
         return inertia('Author', ['journalist' => $journalist->only('firstname', 'lastname'), 'articles' => $articles]);
     }
@@ -85,7 +85,7 @@ class JournalistController extends Controller implements HasMiddleware
      */
     public function edit(User $journalist)
     {
-        $articles = $journalist->articles()->orderBy('created_at', 'desc')->paginate(10);
+        $articles = $journalist->articles()->orderBy('created_at', 'desc')->paginate(10, ['id', 'title']);
 
         return inertia('Dashboard/Journalists/Edit', ['journalist' => $journalist, 'articles' => $articles]);
     }
