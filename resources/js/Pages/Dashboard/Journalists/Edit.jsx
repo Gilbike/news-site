@@ -27,7 +27,10 @@ export default function Edit({ journalist, articles }) {
                 <h2 className="font-bold text-xl mb-2">Articles</h2>
                 <div className="mb-2">
                     {articles.data.map((article) => (
-                        <div className="p-2 border border-neutral-600 roudned [&:not(:last-child)]:border-b-0 first:rounded-t-lg last:rounded-b-lg font-semibold">
+                        <div
+                            key={article.id}
+                            className="p-2 border border-neutral-600 roudned [&:not(:last-child)]:border-b-0 first:rounded-t-lg last:rounded-b-lg font-semibold"
+                        >
                             {article.title}
                         </div>
                     ))}
