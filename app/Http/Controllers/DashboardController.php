@@ -9,7 +9,12 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        $articles = $request->user()->articles()->orderBy("created_at", "desc")->limit(10)->get();
+        $articles = $request
+            ->user()
+            ->articles()
+            ->orderBy("created_at", "desc")
+            ->limit(10)
+            ->get(['id', 'slug', 'title']);
 
         $props = [
             'articles' => $articles,
